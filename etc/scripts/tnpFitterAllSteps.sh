@@ -1,29 +1,23 @@
 #!/bin/bash
 
 
-script=$1
+scripts=( "2016_preVFP" "2016_postVFP" "2017" "2018" )
 flags=(
-#    "passingVeto80X"
-#    "passingMedium80X"
-#    "passingLoose80X"
-#    "passingTight80X"
-#    "passingTight"
-#    "passingMVA80Xwp80"
- #    "passingMVA80Xwp90"
-#    "passingMVAwp80"
-#    "passingMVAwp90"
-    "passingRECO"
+    "eleTight94XV2noIso"
+    "miniIsoTight"
 )
 
-for flag in ${flags[@]}; do
-    echo $flag
-#    python tnpEGM_fitter.py  $script --flag $flag --createBins
-#    python tnpEGM_fitter.py  $script --flag $flag --createHists
-    python tnpEGM_fitter.py  $script --flag $flag --doFit
-    python tnpEGM_fitter.py  $script --flag $flag --doFit --mcSig --altSig
-    python tnpEGM_fitter.py  $script --flag $flag --doFit --altSig
-    python tnpEGM_fitter.py  $script --flag $flag --doFit --altBkg
-    python tnpEGM_fitter.py  $script --flag $flag --sumUp
-done
 
+function doAll(){
+        script="etc/config/settings_ele_UL${1}.py"
+        python tnpEGM_fitter.py  $script --flag $2 --createBins
+        python tnpEGM_fitter.py  $script --flag $2 --createHists
+        python tnpEGM_fitter.py  $script --flag $2 --doFit
+#        python tnpEGM_fitter.py  $script --flag $2 --doFit --mcSig --altSig
+#        python tnpEGM_fitter.py  $script --flag $2 --doFit --altSig
+#        python tnpEGM_fitter.py  $script --flag $2 --doFit --altBkg
+#        python tnpEGM_fitter.py  $script --flag $2 --sumUp
+}
+doAll "$1" "$2"
+#echo {2016_preVFP,2016_postVFP,2017,2018}" "{eleTight95XV2noIso,miniIsoTight} | xargs -I{} -n2 -P 4 bash -c 'doAll "$@"' {}
 

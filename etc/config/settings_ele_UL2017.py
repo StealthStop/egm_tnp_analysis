@@ -7,15 +7,17 @@ conditions=[
     'el_5x5_sieie < (( abs( el_sc_eta) <= 1.479 ) ? 0.0104 : 0.0353 )',
      'abs(el_dPhiIn) < ( abs(el_sc_eta) <= 1.479)? 0.022 : 0.236',
      'el_1overEminus1overP < ( abs(el_sc_eta) <= 1.479 ) ? 0.159 : 0.0197',
-     'abs(el_mHits) <= ( abs( el_sc_eta ) <= 1.479 ) ? 1 : 1',
+     'abs(el_mHits) <= 1',
      'passingCutBasedTight94XV2GsfEleConversionVetoCut',
      'abs(el_hoe) < ( ( ( abs(el_sc_eta) <= 1.479 )  ? 0.026: 0.018) + ( (abs(el_sc_eta) <= 1.479 )? 1.15 : 2.06 ) * ( 1 / el_sc_e )+ ( (abs(el_sc_eta ) <= 1.479 ) ? 0.0324 :  0.183) * event_rho/el_sc_e)',
      '( abs(el_dEtaSeed ) < ( abs(el_sc_eta) <= 1.479 ) ? 0.00255 : 0.00501 )'
     ]
+
+tightNoIsoCut="( " + "&&".join(conditions) + " )"
+
 flags = {
     'miniIsoTight' : '( el_miniIsoAll_fall17 < 0.1 )',
-    #'eleTight94XV2noIso' : '(abs(el_dEtaSeed)<(((abs(el_sc_eta )<= 1.479)*0.00255) + ((abs(el_sc_eta)>1.479)*0.00501)))'
-    'eleTight94XV2noIso'  : "&&".join(conditions)
+    'eleTight94XV2noIso'  : tightNoIsoCut
 }
 
 baseOutDir = 'results/UL2017/tnpEleID/'
@@ -69,9 +71,9 @@ weightName = 'weights_2017_runBCDEF.totWeight'
 if not samplesDef['mcNom' ] is None: samplesDef['mcNom' ].set_weight(weightName)
 if not samplesDef['mcAlt' ] is None: samplesDef['mcAlt' ].set_weight(weightName)
 if not samplesDef['tagSel'] is None: samplesDef['tagSel'].set_weight(weightName)
-if not samplesDef['mcNom' ] is None: samplesDef['mcNom' ].set_puTree('/eos/cms/store/group/phys_egamma/swmukher/UL2017/PU_miniAOD/DY_madgraph_ele.pu.puTree.root')
-if not samplesDef['mcAlt' ] is None: samplesDef['mcAlt' ].set_puTree('/eos/cms/store/group/phys_egamma/swmukher/UL2017/PU_miniAOD/DY_amcatnloext_ele.pu.puTree.root')
-if not samplesDef['tagSel'] is None: samplesDef['tagSel'].set_puTree('/eos/cms/store/group/phys_egamma/swmukher/UL2017/PU_miniAOD/DY_madgraph_ele.pu.puTree.root')
+if not samplesDef['mcNom' ] is None: samplesDef['mcNom' ].set_puTree('root://cmsxrootd.fnal.gov//store/group/phys_egamma/swmukher/UL2017/PU_miniAOD/DY_madgraph_ele.pu.puTree.root')
+if not samplesDef['mcAlt' ] is None: samplesDef['mcAlt' ].set_puTree('root://cmsxrootd.fnal.gov//store/group/phys_egamma/swmukher/UL2017/PU_miniAOD/DY_amcatnloext_ele.pu.puTree.root')
+if not samplesDef['tagSel'] is None: samplesDef['tagSel'].set_puTree('root://cmsxrootd.fnal.gov//store/group/phys_egamma/swmukher/UL2017/PU_miniAOD/DY_madgraph_ele.pu.puTree.root')
 
 
 #############################################################
@@ -87,7 +89,7 @@ biningDef = [
 #############################################################
 ### cut
 cutBase = {
-  "miniIsoTight": 'tag_Ele_pt > 35 && abs(tag_sc_eta) < 2.17 && el_q*tag_Ele_q < 0 && passingMVA94Xwp90noisoV2 == 1',
+  "miniIsoTight": tightNoIsoCut,
   "eleTight94XV2noIso": '1',
 }
 # can add addtionnal cuts for some bins (first check bin number using tnpEGM --checkBins)
