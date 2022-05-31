@@ -3,6 +3,7 @@ echo "Starting job on " `date` #Date/time of start of job
 echo "Running on: `uname -a`" #Condor job is running on this node
 echo "System software: `cat /etc/redhat-release`" #Operating System on that node
 echo "Parameters: ${@}"
+export XRD_REQUESTTIMEOUT=1800
 source /cvmfs/cms.cern.ch/cmsset_default.sh 
 tar -xf ${1}.tar.gz
 rm ${1}.tar.gz

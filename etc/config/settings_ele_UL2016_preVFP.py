@@ -71,9 +71,9 @@ weightName = 'weights_2016_run2016.totWeight'
 if not samplesDef['mcNom' ] is None: samplesDef['mcNom' ].set_weight(weightName)
 if not samplesDef['mcAlt' ] is None: samplesDef['mcAlt' ].set_weight(weightName)
 if not samplesDef['tagSel'] is None: samplesDef['tagSel'].set_weight(weightName)
-if not samplesDef['mcNom' ] is None: samplesDef['mcNom' ].set_puTree('root://cmsxrootd.fnal.gov//store/group/phys_egamma/asroy/Tag-and-Probe_Tree/UL2016/PU_Trees/preVFP/DY_madgraph_ele.pu.puTree.root')
-if not samplesDef['mcAlt' ] is None: samplesDef['mcAlt' ].set_puTree('root://cmsxrootd.fnal.gov//store/group/phys_egamma/asroy/Tag-and-Probe_Tree/UL2016/PU_Trees/preVFP/DY_amcatnloext_ele.pu.puTree.root')
-if not samplesDef['tagSel'] is None: samplesDef['tagSel'].set_puTree('root://cmsxrootd.fnal.gov//store/group/phys_egamma/asroy/Tag-and-Probe_Tree/UL2016/PU_Trees/preVFP/DY_madgraph_ele.pu.puTree.root')
+if not samplesDef['mcNom' ] is None: samplesDef['mcNom' ].set_puTree('root://cmsxrootd.fnal.gov///store/group/phys_egamma/asroy/Tag-and-Probe_Tree/UL2016/PU_Trees/preVFP/DY_madgraph_ele.pu.puTree.root')
+if not samplesDef['mcAlt' ] is None: samplesDef['mcAlt' ].set_puTree('root://cmsxrootd.fnal.gov///store/group/phys_egamma/asroy/Tag-and-Probe_Tree/UL2016/PU_Trees/preVFP/DY_amcatnloext_ele.pu.puTree.root')
+if not samplesDef['tagSel'] is None: samplesDef['tagSel'].set_puTree('root://cmsxrootd.fnal.gov///store/group/phys_egamma/asroy/Tag-and-Probe_Tree/UL2016/PU_Trees/preVFP/DY_madgraph_ele.pu.puTree.root')
 
 
 #############################################################
@@ -108,18 +108,18 @@ cutBase = {
 #    8 : 'tag_Ele_trigMVA > 0.92 && sqrt( 2*event_met_pfmet*tag_Ele_pt*(1-cos(event_met_pfphi-tag_Ele_phi))) < 45',
 #    9 : 'tag_Ele_trigMVA > 0.92 && sqrt( 2*event_met_pfmet*tag_Ele_pt*(1-cos(event_met_pfphi-tag_Ele_phi))) < 45'
 #}
-additionalCuts = { 
-    0 : 'tag_Ele_trigMVA > 0.92 ',
-    1 : 'tag_Ele_trigMVA > 0.92 ',
-    2 : 'tag_Ele_trigMVA > 0.92 ',
-    3 : 'tag_Ele_trigMVA > 0.92 ',
-    4 : 'tag_Ele_trigMVA > 0.92 ',
-    5 : 'tag_Ele_trigMVA > 0.92 ',
-    6 : 'tag_Ele_trigMVA > 0.92 ',
-    7 : 'tag_Ele_trigMVA > 0.92 ',
-    8 : 'tag_Ele_trigMVA > 0.92 ',
-    9 : 'tag_Ele_trigMVA > 0.92 '
-}
+#additionalCuts = { 
+#    0 : 'tag_Ele_trigMVA > 0.92 ',
+#    1 : 'tag_Ele_trigMVA > 0.92 ',
+#    2 : 'tag_Ele_trigMVA > 0.92 ',
+#    3 : 'tag_Ele_trigMVA > 0.92 ',
+#    4 : 'tag_Ele_trigMVA > 0.92 ',
+#    5 : 'tag_Ele_trigMVA > 0.92 ',
+#    6 : 'tag_Ele_trigMVA > 0.92 ',
+#    7 : 'tag_Ele_trigMVA > 0.92 ',
+#    8 : 'tag_Ele_trigMVA > 0.92 ',
+#    9 : 'tag_Ele_trigMVA > 0.92 '
+#}
 
 #### or remove any additional cut (default)
 #additionalCuts = None
