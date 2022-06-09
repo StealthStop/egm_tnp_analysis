@@ -5,10 +5,10 @@ eosLegacyReReco2016 = '/eos/cms/store/group/phys_egamma/swmukher/egmNtuple_V2ID_
 eosReReco2017 = '/eos/cms/store/group/phys_egamma/swmukher/ntuple_2017_v2/'
 eosReReco2018 = '/eos/cms/store/group/phys_egamma/swmukher/rereco2018/ECAL_NOISE/'
 
-eosUL2016APV ="root://cmsxrootd.fnal.gov///store/group/phys_egamma/tnpTuples/rasharma/2020-02-10/UL2016preVFP/merged/"
-eosUL2016 =   "root://cmsxrootd.fnal.gov///store/group/phys_egamma/tnpTuples/rasharma/2021-02-10/UL2016postVFP/merged/"
-eosUL2017 =   "root://cmsxrootd.fnal.gov///store/group/phys_egamma/tnpTuples/tomc/2020-05-20/UL2017/merged/"
-eosUL2018 =   "root://cmsxrootd.fnal.gov///store/group/phys_egamma/tnpTuples/tomc/2020-05-20/UL2018/merged/"
+eosUL2016APV ="root://eoscms.cern.ch///store/group/phys_egamma/tnpTuples/rasharma/2020-02-10/UL2016preVFP/merged/"
+eosUL2016 =   "root://eoscms.cern.ch///store/group/phys_egamma/tnpTuples/rasharma/2021-02-10/UL2016postVFP/merged/"
+eosUL2017 =   "root://eoscms.cern.ch///store/group/phys_egamma/tnpTuples/tomc/2020-05-20/UL2017/merged/"
+eosUL2018 =   "root://eoscms.cern.ch///store/group/phys_egamma/tnpTuples/tomc/2020-05-20/UL2018/merged/"
 
 ReReco2017 = {
 

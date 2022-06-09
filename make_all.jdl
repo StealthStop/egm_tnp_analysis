@@ -2,10 +2,11 @@ universe = vanilla
 Executable = condor_run.sh
 should_transfer_files = YES
 transfer_input_files=$ENV(CMSSW_VERSION).tar.gz,condor_run.sh
-transfer_output_files=results
+transfer_output_files=$ENV(CMSSW_VERSION)/src/egm_tnp_analysis/results
 Output = logs/$(Cluster)_$(Process).stdout
 Error = logs/$(Cluster)_$(Process).stderr
 Log = logs/$(Cluster)_$(Process).log
 arguments = $ENV(CMSSW_VERSION) $(year) $(type)
-queue year,type from ./forcombos.py -1 2016_preVFP 2016_postVFP 2017 2018 -2 eleTight94XV2noIso miniIsoTight |
+#queue year,type from ./forcombos.py -1 2016_preVFP 2016_postVFP 2017 2018 -2 eleTight94XV2noIso miniIsoTight |
+queue year,type from ./forcombos.py -1 2016_preVFP -2 eleTight94XV2noIso miniIsoTight |
 
