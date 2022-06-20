@@ -5,7 +5,7 @@ eosLegacyReReco2016 = '/eos/cms/store/group/phys_egamma/swmukher/egmNtuple_V2ID_
 eosReReco2017 = '/eos/cms/store/group/phys_egamma/swmukher/ntuple_2017_v2/'
 eosReReco2018 = '/eos/cms/store/group/phys_egamma/swmukher/rereco2018/ECAL_NOISE/'
 
-eosUL2016APV ="root://eoscms.cern.ch///store/group/phys_egamma/tnpTuples/rasharma/2020-02-10/UL2016preVFP/merged/"
+eosUL2016APV ="root://eoscms.cern.ch///store/group/phys_egamma/tnpTuples/rasharma/2021-02-10/UL2016preVFP/merged/"
 eosUL2016 =   "root://eoscms.cern.ch///store/group/phys_egamma/tnpTuples/rasharma/2021-02-10/UL2016postVFP/merged/"
 eosUL2017 =   "root://eoscms.cern.ch///store/group/phys_egamma/tnpTuples/tomc/2020-05-20/UL2017/merged/"
 eosUL2018 =   "root://eoscms.cern.ch///store/group/phys_egamma/tnpTuples/tomc/2020-05-20/UL2018/merged/"
@@ -84,33 +84,33 @@ UL2016_preVFP = {
     ),
     'DY_amcatnloext': tnpSample(
         'DY_amcatnloext',
-        eosUL2016 + 'DY_NLO_L1matched.root',
+        eosUL2016APV + 'DY_NLO_L1matched.root',
         isMC = True, nEvts =  -1 
     ),
 
     'data_Run2016B': tnpSample(
         'data_Run2016B', 
-        eosUL2016 + 'Run2016B_L1matched.root', 
+        eosUL2016APV + 'Run2016B_L1matched.root', 
         lumi = 0.030493962 + 5.879330594
     ),
     'data_Run2016C': tnpSample(
         'data_Run2016C', 
-        eosUL2016 + 'Run2016C_L1matched.root', 
+        eosUL2016APV + 'Run2016C_L1matched.root', 
         lumi = 2.64992914
     ),
     'data_Run2016D': tnpSample(
         'data_Run2016D', 
-        eosUL2016 + 'Run2016D_L1matched.root', 
+        eosUL2016APV + 'Run2016D_L1matched.root', 
         lumi = 4.292865604
     ),
     'data_Run2016E': tnpSample(
         'data_Run2016E', 
-        eosUL2016 + 'Run2016E_L1matched.root', 
+        eosUL2016APV + 'Run2016E_L1matched.root', 
         lumi = 4.185165152
     ),
     'data_Run2016F': tnpSample(
         'data_Run2016F', 
-        eosUL2016 + 'Run2016F_L1matched.root', 
+        eosUL2016APV + 'Run2016F_L1matched.root', 
         lumi = 2.725508364
     ),
 }

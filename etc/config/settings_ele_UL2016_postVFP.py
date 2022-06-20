@@ -85,9 +85,14 @@ biningDef = [
 ########## Cuts definition for all samples
 #############################################################
 ### cut
+#cutBase = {
+#  "miniIsoTight": tightNoIsoCut,
+#  "eleTight94XV2noIso": '1',
+#}
+
 cutBase = {
-  "miniIsoTight": tightNoIsoCut,
-  "eleTight94XV2noIso": '1',
+  "miniIsoTight": "( " + tightNoIsoCut +  ' && ( tag_Ele_pt > 35 && abs(tag_sc_eta) < 2.17 )' + " )",
+  "eleTight94XV2noIso": '( tag_Ele_pt > 35 && abs(tag_sc_eta) < 2.17 )' 
 }
 
 # can add addtionnal cuts for some bins (first check bin number using tnpEGM --checkBins)
