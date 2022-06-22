@@ -49,6 +49,7 @@ samplesDef['data'].add_sample( tnpSamples.UL2016_preVFP['data_Run2016F'] )
 ## if you need to use 2 times the same sample, then rename the second one
 #samplesDef['data'  ].set_cut('run >= 273726')
 samplesDef['data' ].set_tnpTree(tnpTreeDir)
+
 if not samplesDef['mcNom' ] is None: samplesDef['mcNom' ].set_tnpTree(tnpTreeDir)
 if not samplesDef['mcAlt' ] is None: samplesDef['mcAlt' ].set_tnpTree(tnpTreeDir)
 if not samplesDef['tagSel'] is None: samplesDef['tagSel'].set_tnpTree(tnpTreeDir)
@@ -56,6 +57,7 @@ if not samplesDef['tagSel'] is None: samplesDef['tagSel'].set_tnpTree(tnpTreeDir
 if not samplesDef['mcNom' ] is None: samplesDef['mcNom' ].set_mcTruth()
 if not samplesDef['mcAlt' ] is None: samplesDef['mcAlt' ].set_mcTruth()
 if not samplesDef['tagSel'] is None: samplesDef['tagSel'].set_mcTruth()
+
 if not samplesDef['tagSel'] is None:
     samplesDef['tagSel'].rename('mcAltSel_DY_madgraph')
     samplesDef['tagSel'].set_cut('tag_Ele_pt > 37') #canceled non trig MVA cut

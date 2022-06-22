@@ -90,8 +90,8 @@ biningDef = [
 ### cut
 
 cutBase = {
-  "miniIsoTight": "( " + tightNoIsoCut +  ' && ( tag_Ele_pt > 35 && abs(tag_sc_eta) < 2.17 )' + " )",
-  "eleTight94XV2noIso": '( tag_Ele_pt > 35 && abs(tag_sc_eta) < 2.17 )' 
+  "miniIsoTight": "( " + tightNoIsoCut +  ' && ( tag_Ele_pt > 20 && abs(tag_sc_eta) < 2.4 )' + " )",
+  "eleTight94XV2noIso": '( tag_Ele_pt > 20 && abs(tag_sc_eta) < 2.4 )' 
 }
 #cutBase = {
 #  "miniIsoTight": tightNoIsoCut,
