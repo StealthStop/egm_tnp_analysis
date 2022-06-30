@@ -4,13 +4,13 @@
 # flag to be Tested
 
 conditions=[
-    'el_5x5_sieie < (( abs( el_sc_eta) <= 1.479 ) ? 0.0104 : 0.0353 )',
-     'abs(el_dPhiIn) < ( abs(el_sc_eta) <= 1.479)? 0.022 : 0.236',
-     'el_1overEminus1overP < ( abs(el_sc_eta) <= 1.479 ) ? 0.159 : 0.0197',
+    'el_5x5_sieie < ( ( abs( el_sc_eta) <= 1.479 ) ? 0.0104 : 0.0353 )',
+     'abs(el_dPhiIn) < ( ( abs(el_sc_eta) <= 1.479)? 0.022 : 0.236 )',
+     'el_1overEminus1overP < ( ( abs(el_sc_eta) <= 1.479 ) ? 0.159 : 0.0197 )',
      'abs(el_mHits) <= 1',
      'passingCutBasedTight94XV2GsfEleConversionVetoCut',
      'abs(el_hoe) < ( ( ( abs(el_sc_eta) <= 1.479 )  ? 0.026: 0.018) + ( (abs(el_sc_eta) <= 1.479 )? 1.15 : 2.06 ) * ( 1 / el_sc_e )+ ( (abs(el_sc_eta ) <= 1.479 ) ? 0.0324 :  0.183) * event_rho/el_sc_e)',
-     '( abs(el_dEtaSeed ) < ( abs(el_sc_eta) <= 1.479 ) ? 0.00255 : 0.00501 )'
+     '( abs(el_dEtaSeed ) < ( ( abs(el_sc_eta) <= 1.479 ) ? 0.00255 : 0.00501 ))'
     ]
 
 tightNoIsoCut="( " + "&&".join(conditions) + " )"
@@ -150,11 +150,11 @@ tnpParAltSigFit_addGaus = [
     "acmsP[60.,50.,75.]","betaP[0.04,0.01,0.06]","gammaP[0.1, 0.005, 1]","peakP[90.0]",
     "acmsF[60.,50.,85.]","betaF[0.04,0.01,0.06]","gammaF[0.1, 0.005, 1]","peakF[90.0]",
     ]
-         
+
 tnpParAltBkgFit = [
     "meanP[-0.0,-5.0,5.0]","sigmaP[0.9,0.5,5.0]",
     "meanF[-0.0,-5.0,5.0]","sigmaF[0.9,0.5,5.0]",
     "alphaP[0.,-5.,5.]",
     "alphaF[0.,-5.,5.]",
     ]
-        
+
