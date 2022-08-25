@@ -19,11 +19,16 @@ cdef void removeNegativeBins(TH1D* h):
         if (h.GetBinContent(i) < 0):
             h.SetBinContent(i, 0)
 
+cdef float getWeight(float eta, float pt, TH2D* h ):
+    return (<TH2*>h).GetBinContent((<TH2*>h).FindBin(eta,pt))
+
+
+
 ##################################
 # To Fill Tag and Probe histograms
 ##################################
 
-def makePassFailHistograms( sample, flag, bindef, var ):
+def makePassFailHistograms( sample, flag, bindef, var, validation="" ):
 
     #####################
     # C++ Initializations
@@ -31,6 +36,8 @@ def makePassFailHistograms( sample, flag, bindef, var ):
 
     # For tree branches
     cdef float pair_mass
+    cdef float el_pt
+    cdef float el_eta
 
     # For the loop
     cdef int nbins = 0
@@ -71,6 +78,11 @@ def makePassFailHistograms( sample, flag, bindef, var ):
     #################################
     # Prepare hists, cuts and outfile
     #################################
+    cdef TFile* sf_file
+    cdef TH2D* sf_histo
+    if validation:
+        sf_file = new TFile(str.encode(validation), "read")
+        sf_histo = <TH2D*>sf_file.Get("EGamma_SF2D")
 
     cdef TFile* outfile = new TFile(str.encode(sample.histFile),'recreate')
 
@@ -129,6 +141,8 @@ def makePassFailHistograms( sample, flag, bindef, var ):
 
     # Set adress of pair mass
     tree.SetBranchAddress("pair_mass", <void*>&pair_mass)
+    tree.SetBranchAddress("el_pt", <void*>&el_pt)
+    tree.SetBranchAddress("el_sc_eta", <void*>&el_eta)
 
     ################
     # Loop over Tree
@@ -150,6 +164,8 @@ def makePassFailHistograms( sample, flag, bindef, var ):
             weight = bin_formulas[bnidx].EvalInstance(0)
             if weight:
                 if flag_formula.EvalInstance(0):
+                    if(validation and sample.isMC):
+                        weight *= getWeight(el_eta, el_pt, sf_histo)
                     hPass[bnidx].Fill(pair_mass, weight)
                 else:
                     hFail[bnidx].Fill(pair_mass, weight)
@@ -158,6 +174,8 @@ def makePassFailHistograms( sample, flag, bindef, var ):
     #####################
     # Deal with the Hists
     #####################
+    cdef TH1D* sf
+    cdef TFile* sffile
 
     for ib in range(len(bindef['bins'])):
         removeNegativeBins(hPass[ib])

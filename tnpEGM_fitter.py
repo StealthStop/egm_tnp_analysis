@@ -21,6 +21,7 @@ parser.add_argument('--doPlot'     , action='store_true'  , help = 'plotting')
 parser.add_argument('--sumUp'      , action='store_true'  , help = 'sum up efficiencies')
 parser.add_argument('--iBin'       , dest = 'binNumber'   , type = int,  default=-1, help='bin number (to refit individual bin)')
 parser.add_argument('--flag'       , default = None       , help ='WP to test')
+parser.add_argument('--validate'   , type=str, default = "", help ='Do validation, storing results in dir')
 parser.add_argument('settings'     , default = None       , help = 'setting file [mandatory]')
 
 
@@ -47,7 +48,12 @@ if not args.flag in tnpConf.flags.keys() :
     print tnpConf.flags.keys()
     sys.exit(1)
 
+validate = args.validate
 outputDirectory = '%s/%s/' % (tnpConf.baseOutDir,args.flag)
+origOutDir = outputDirectory
+
+if validate:
+    outputDirectory = validate + "/" + outputDirectory
 
 print '===>  Output directory: '
 print outputDirectory
@@ -102,7 +108,10 @@ if args.createHists:
             var = { 'name' : 'pair_mass', 'nbins' : 80, 'min' : 50, 'max': 130 }
             if sample.mcTruth:
                 var = { 'name' : 'pair_mass', 'nbins' : 80, 'min' : 50, 'max': 130 }
-            tnpHist.makePassFailHistograms( sample, tnpConf.flags[args.flag], tnpBins, var )
+            if validate:
+                tnpHist.makePassFailHistograms( sample, tnpConf.flags[args.flag], tnpBins, var, origOutDir + "/" + "egammaEffi.txt_EGM2D.root")
+            else:
+                tnpHist.makePassFailHistograms( sample, tnpConf.flags[args.flag], tnpBins, var )
 
     sys.exit(0)
 

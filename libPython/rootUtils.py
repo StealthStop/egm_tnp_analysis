@@ -101,7 +101,7 @@ def computeEffi( n1,n2,e1,e2):
 
 
 import os.path
-def getAllEffi( info, bindef ):
+def getAllEffi( info, bindef, validate=None ):
     effis = {}
     if not info['mcNominal'] is None and os.path.isfile(info['mcNominal']):
         rootfile = rt.TFile( info['mcNominal'], 'read' )
@@ -115,9 +115,9 @@ def getAllEffi( info, bindef ):
         eF = rt.Double(-1.0)
         nP = hP.IntegralAndError(bin1,bin2,eP)
         nF = hF.IntegralAndError(bin1,bin2,eF)
-
         effis['mcNominal'] = computeEffi(nP,nF,eP,eF)
         rootfile.Close()
+
     else: effis['mcNominal'] = [-1,-1]
 
     if not info['tagSel'] is None and os.path.isfile(info['tagSel']):

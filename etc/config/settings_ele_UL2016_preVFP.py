@@ -4,7 +4,7 @@
 # flag to be Tested
 
 conditions=[
-    'el_5x5_sieie < ( ( abs( el_sc_eta) <= 1.479 ) ? 0.0104 : 0.0353 )',
+     'el_5x5_sieie < ( ( abs( el_sc_eta) <= 1.479 ) ? 0.0104 : 0.0353 )',
      'abs(el_dPhiIn) < ( ( abs(el_sc_eta) <= 1.479)? 0.022 : 0.236 )',
      'el_1overEminus1overP < ( ( abs(el_sc_eta) <= 1.479 ) ? 0.159 : 0.0197 )',
      'abs(el_mHits) <= 1',
@@ -92,8 +92,8 @@ biningDef = [
 #############################################################
 ### cut
 cutBase = {
-  "miniIsoTight": "( " + tightNoIsoCut +  ' && ( tag_Ele_pt > 20 && abs(tag_sc_eta) < 2.4 )' + " )",
-  "eleTight94XV2noIso": '( tag_Ele_pt > 20 && abs(tag_sc_eta) < 2.4 )' 
+  "miniIsoTight": "( " + tightNoIsoCut +  ' && ( tag_Ele_pt > 20 && abs(tag_sc_eta) < 2.4 && el_q*tag_Ele_q < 0 ) ' + " )",
+  "eleTight94XV2noIso": '( tag_Ele_pt > 20 && abs(tag_sc_eta) < 2.4 && el_q*tag_Ele_q < 0 )' 
 }
 
 # can add addtionnal cuts for some bins (first check bin number using tnpEGM --checkBins)

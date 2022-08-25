@@ -10,4 +10,5 @@ arguments = $ENV(CMSSW_VERSION) $(year) $(type)
 #queue year,type from ./forcombos.py -1 2016_preVFP 2016_postVFP 2017 2018 -2 eleTight94XV2noIso miniIsoTight |
 #queue year,type from ./forcombos.py -1 2016_preVFP -2 eleTight94XV2noIso miniIsoTight |
 #queue year,type from ./forcombos.py -1 2016_postVFP -2 eleTight94XV2noIso miniIsoTight |
+queue year,type from ./forcombos.py -1 2018 -2 eleTight94XV2noIso miniIsoTight |
 
