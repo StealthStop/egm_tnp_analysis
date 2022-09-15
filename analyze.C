@@ -42,7 +42,7 @@ auto makeHistForBins(T&& df, int eb, int pb, int weight=0){
 //const std::string numerator = "el_miniIsoAll_fall17 < 0.1";
 //const std::string den = "tag_Ele_pt > 20 && abs(tag_sc_eta) < 2.4";
 #define PREMODE 1
- const std::string den = "tag_Ele_pt > 20  && abs(el_sc_eta) < 2.4 && abs(pair_mass - 90 ) < 10 && ( el_q * tag_Ele_q ) < 0";
+ const std::string den = "abs(el_sc_eta) < 2.4 && abs(pair_mass - 91.18 ) < 0.1 && ( el_q * tag_Ele_q ) < 0";
 //const std::string den = "tag_Ele_pt > 20  && abs(el_sc_eta) < 2.4 && ( el_q * tag_Ele_q ) < 0";
 //const std::string den = "true";
 const std::string numerator = "PassesTightID";
@@ -64,8 +64,8 @@ void analyze(const std::string& inname){
     float data_integral = (float)*dfd_den.Count();
 
     auto dfm_den_weighted = dfm_den.Define("mc_weight",
-            [&](float x, float y)
-            {return x * y ;}, {"totWeight", "PUweight"});
+            [&](float x)
+            {return x;}, {"totWeight"});
 
     float mc_integral = (float)*dfm_den_weighted.Sum("mc_weight");
     float overall_scale = data_integral / mc_integral;
@@ -122,12 +122,13 @@ void analyze(const std::string& inname){
     gStyle->SetOptStat(1111111);
     auto canvas = new TCanvas("c","xhist", 1000,1000);
 
-    auto hd = dfd_num.Histo1D({"","",100,0,200}, "el_pt");
-    auto hm = dfm_num.Histo1D({"","",100,0,200}, "el_pt", "total_scale");
-    auto hm_noscale = dfm_num.Histo1D({"","",100,0,200}, "el_pt", "normalized_weight");
-    // auto hd = dfd.Histo1D({"","",100,0,200}, "pair_mass");
-    // auto hm = dfm.Histo1D({"","",100,0,200}, "pair_mass", "realweight");
-    // auto hm_noscale = dfm_noscale.Histo1D({"","",100,0,200}, "pair_mass", "datacorrection");
+     auto hd = dfd_num.Histo1D({"","",100,0,200}, "el_pt");
+     auto hm = dfm_num.Histo1D({"","",100,0,200}, "el_pt", "total_scale");
+     auto hm_noscale = dfm_num.Histo1D({"","",100,0,200}, "el_pt", "normalized_weight");
+
+    // auto hd = dfd_num.Histo1D({"","",100,0,200}, "pair_mass");
+    // auto hm = dfm_num.Histo1D({"","",100,0,200}, "pair_mass", "total_scale");
+    // auto hm_noscale = dfm_num.Histo1D({"","",100,0,200}, "pair_mass", "normalized_weight");
     hd->GetXaxis()->SetRangeUser(0, 200);
     hm->GetXaxis()->SetRangeUser(0, 200);
     hm_noscale->GetXaxis()->SetRangeUser(0, 200);
@@ -140,11 +141,15 @@ void analyze(const std::string& inname){
     auto trp = new TRatioPlot(&tempd, &tempm);
     auto trp_noscale = new TRatioPlot(&tempd, &tempm_noscale);
     trp->Draw();
-
     trp->GetLowerRefGraph()->SetMaximum(1.5);
     trp->GetLowerRefGraph()->SetMinimum(0);
     trp->Draw();
     canvas->SaveAs("ratio.pdf");
+    trp_noscale->Draw();
+    trp_noscale->GetLowerRefGraph()->SetMaximum(1.5);
+    trp_noscale->GetLowerRefGraph()->SetMinimum(0);
+    trp_noscale->Draw();
+    canvas->SaveAs("ratio_unscaled.pdf");
     trp->Write("ratio");
     trp_noscale->Write("unscaled");
 

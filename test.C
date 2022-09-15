@@ -8,14 +8,14 @@
 #include <ROOT/RSnapshotOptions.hxx>
 
 inline bool isTight(const float sie, const float dphi, const float sc_eta, const float over, const int veto, const float hoe, const float sc_e, const float rho, const float etaseed){
-        const bool iscap = std::abs(sc_eta) > 1.479f;
-        return ( sie < ( (iscap)? 0.0104f : 0.353 ) )
-             &&  ( std::abs(dphi) < ( (iscap)? 0.022 : 0.236 ))
-             && ( over <  ( (iscap)? 0.159 : 0.0197 ))
+        const bool is_bar = std::abs(sc_eta) <= 1.479f;
+        return ( sie < ( (is_bar)? 0.0104f : 0.0353 ) )
+             &&  ( std::abs(dphi) < ( (is_bar)? 0.022 : 0.236 ))
+             && ( over <  ( (is_bar)? 0.159 : 0.0197 ))
              && ( std::abs(hoe) <= 1)
              && ( veto )
-             && ( std::abs(hoe) < ( ( iscap ? 0.026 : 0.18) + (iscap ? 1.15 : 2.06) * ( 1/ sc_e) + (iscap ? 0.0324 : 0.183) * rho/sc_e) )
-             && ( etaseed < ( ( iscap )? 0.00255 : 0.00501 ) );
+             && ( std::abs(hoe) < ( ( is_bar ? 0.026 : 0.18) + (is_bar ? 1.15 : 2.06) * ( 1/ sc_e) + (is_bar ? 0.0324 : 0.183) * rho/sc_e) )
+             && ( etaseed < ( ( is_bar )? 0.00255 : 0.00501 ) );
 }
 
 void test(){

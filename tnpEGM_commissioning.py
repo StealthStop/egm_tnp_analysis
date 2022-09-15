@@ -31,26 +31,28 @@ iPeriod = 0
 ##### define data samples
 dataSamples = {
 #    'runBCD'  :  tnpSamples.Moriond17_80X['data_Run2016B'].clone(),
-    'runH'  :  tnpSamples.Legacy2016_v1_80X['data_Run2016H'].clone(),
+     'run2017' : tnpSamples.UL2017['data_Run2017B'].clone(),
 }
-#dataSamples['runBCD'].add_sample(tnpSamples.Moriond17_80X['data_Run2016C'])
-#dataSamples['runBCD'].add_sample(tnpSamples.Moriond17_80X['data_Run2016D'])
+dataSamples['run2017'].add_sample( tnpSamples.UL2017['data_Run2017C'] )
+dataSamples['run2017'].add_sample( tnpSamples.UL2017['data_Run2017D'] )
+dataSamples['run2017'].add_sample( tnpSamples.UL2017['data_Run2017E'] )
+dataSamples['run2017'].add_sample( tnpSamples.UL2017['data_Run2017F'] )
 
 ##### define mc samples
 mcSamples = {
 #    'runBCD'  : tnpSamples.Remini17_80X['DY_madgraph'  ].clone(),  
-    'runH'  : tnpSamples.Legacy2016_v1_80X['DY_madgraph_Winter17' ].clone(),  
+    'run2017'  : tnpSamples.UL2017['DY_madgraph'].clone(),
 }
 #mcSamples['runBCD'].set_puTree('root://eoscms.cern.ch//eos/cms/store/group/phys_egamma/tnp/80X/pu/DY_madgraph_MCWinter17_rec_rec.pu.puTree.root')
 #mcSamples['runBCD'].set_weight('weights_2016_runBCD.totWeight')
 weightName = 'totWeight'
 #mcSamples['runBCD'].set_weight(weightName)
-mcSamples['runH'].set_weight(weightName)
+mcSamples['run2017'].set_weight(weightName)
 
 
 
 #### the different epochs to run over
-epochs = [ 'runH' ]
+epochs = [ 'run2017' ]
 
 ### the output directory
 outputdir = 'plots/commissioning/'

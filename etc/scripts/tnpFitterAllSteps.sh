@@ -1,12 +1,10 @@
 #!/bin/bash
 
-
 scripts=( "2016_preVFP" "2016_postVFP" "2017" "2018" )
 flags=(
     "eleTight94XV2noIso"
     "miniIsoTight"
 )
-
 
 function doAll(){
         script="etc/config/settings_ele_UL${1}.py"
