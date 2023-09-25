@@ -17,7 +17,8 @@ tightNoIsoCut="( " + "&&".join(conditions) + " )"
 
 flags = {
     'miniIsoTight' : '( el_miniIsoAll_fall17 < 0.1 )',
-    'eleTight94XV2noIso'  : tightNoIsoCut
+    'eleTight94XV2noIso'  : tightNoIsoCut,
+    'impact'  : "( (el_dz < ( ( abs(el_sc_eta) <= 1.479 )  ? 0.1 : 0.20 ) )  && (el_dxy < ( ( abs(el_sc_eta) <= 1.479 )  ? 0.05 : 0.10 ) ) ) "
 }
 
 baseOutDir = 'results/UL2018/tnpEleID/'
@@ -90,8 +91,10 @@ biningDef = [
 
 cutBase = {
   "miniIsoTight": "( " + tightNoIsoCut +  ' && ( tag_Ele_pt > 20 && abs(tag_sc_eta) < 2.4 && el_q*tag_Ele_q < 0 ) ' + " )",
-  "eleTight94XV2noIso": '( tag_Ele_pt > 20 && abs(tag_sc_eta) < 2.4 && el_q*tag_Ele_q < 0 )' 
+  "eleTight94XV2noIso": '( tag_Ele_pt > 20 && abs(tag_sc_eta) < 2.4 && el_q*tag_Ele_q < 0 )' ,
+  "impact": "( ( el_miniIsoAll_fall17 < 0.1 )  && " + tightNoIsoCut +  " && ( tag_Ele_pt > 20 && abs(tag_sc_eta) < 2.4 && el_q*tag_Ele_q < 0 ) )",
 }
+
 
 #cutBase = {
 #  "miniIsoTight": tightNoIsoCut,

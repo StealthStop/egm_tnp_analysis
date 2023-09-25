@@ -14,7 +14,12 @@ echo $CMSSW_BASE "is the CMSSW we have on the local worker node"
 cd ${_CONDOR_SCRATCH_DIR}
 cd ${1}/src/egm_tnp_analysis
 pwd
+rm libCpp/*.so
+ls libCpp
+make clean-all
+make cython-build
 make 
+ls libCpp
 echo "Starting EGM Fitter with arguments ${@:2}"
 ./etc/scripts/tnpFitterAllSteps.sh "${@:2}"
 

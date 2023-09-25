@@ -8,13 +8,29 @@ flags=(
 
 function doAll(){
         script="etc/config/settings_ele_UL${1}.py"
+        echo "================================================================"
+        echo "Creating Bins"
         python tnpEGM_fitter.py  $script --flag $2 --createBins
+        echo "================================================================"
+        echo "Creating Hists"
         python tnpEGM_fitter.py  $script --flag $2 --createHists
+        echo "================================================================"
+        echo "Creating Doing Fits"
         python tnpEGM_fitter.py  $script --flag $2 --doFit
+        echo "================================================================"
+        echo "Doing Fits"
         python tnpEGM_fitter.py  $script --flag $2 --doFit --mcSig --altSig
+        echo "================================================================"
+        echo "Doing Fits"
         python tnpEGM_fitter.py  $script --flag $2 --doFit --altSig
+        echo "================================================================"
+        echo "Doing Fits"
         python tnpEGM_fitter.py  $script --flag $2 --doFit --altBkg
+        echo "================================================================"
+        echo "Summing"
         python tnpEGM_fitter.py  $script --flag $2 --sumUp
+        echo "================================================================"
+        echo "Done"
 }
 export -f doAll
 doAll "$1" "$2"
